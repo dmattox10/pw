@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Form, Input, Label, Button, Row, Col } from 'reactstrap'
 import { checkPassword } from '../actions'
 
+import Loading from './Loading'
+
 const Check = props => {
     
     const [password, updatePassword] = useState('password')
@@ -28,7 +30,8 @@ const Check = props => {
                <Button onClick={ () => props.checkPassword(password)}>Check!</Button>
                </Col>
            </Row>
-           
+           <div className='spacer'></div>
+           <Loading />
             
        </Form>
     )
