@@ -18,6 +18,20 @@ export const reducer = (state = initialState, action) => {
                 isLoading: true
             }
 
+        case 'REQUEST_SUCCESS':
+            return {
+                ...state,
+                isLoading: false,
+                results: action.payload
+            }
+
+        case 'REQUEST_FAILURE':
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+
         default:
             return state
     }
