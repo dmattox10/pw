@@ -13,3 +13,5 @@ How it, and my application works is by hashing the password into an unrecognizab
 
 ### Caveat:
 I need to finish ONE feature. If your password is safe and has never been leaked, it just spins forever. I need to make it display to the user that they are safe.
+
+This app is deployed on my private server [HERE](https://pw.danielmattox.com)
