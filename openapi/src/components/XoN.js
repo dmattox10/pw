@@ -19,7 +19,7 @@ const XoN = props => {
             </Jumbotron>
             {!props.results && !props.isLoading && <Check />}
                 {!props.results && props.isLoading && <Loading />}
-                {props.results ? <Results results={ props.results }/> : <Success />}
+                {props.results ? <Results results={ props.results }/> : <Success results={props.results} />}
             <div className='center'>
                 <p>This site does NOT send your password. It works by encrypting your password using Keccak-512 hashing, which results in a hashed string 128 characters long, and then we send the first ten characters of the hash only. If you don't trust this site, try searching for "password" or "123456" just for fun!</p>
             </div>
