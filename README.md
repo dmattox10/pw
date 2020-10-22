@@ -12,3 +12,5 @@ How it, and my application works is by hashing the password into an unrecognizab
 - Bootstrap through Reactstrap with Bootswatch theming for style
 
 This app is deployed on my private server [HERE](https://pw.danielmattox.com)
+
+<img src="media/screenshot.png" align="center" style="width: 100%" />
