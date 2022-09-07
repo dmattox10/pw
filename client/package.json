@@ -7,12 +7,14 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
-    "bootswatch": "^4.4.1",
+    "bootstrap": "^5.2.0",
+    "bootswatch": "^5.2.0",
     "keccak": "^3.0.0",
     "react": "^16.12.0",
+    "react-bootstrap": "^2.5.0",
     "react-dom": "^16.12.0",
+    "react-promise-tracker": "^2.1.0",
     "react-scripts": "3.3.0",
-    "reactstrap": "^8.4.0",
     "sha3": "^2.1.1"
   },
   "scripts": {

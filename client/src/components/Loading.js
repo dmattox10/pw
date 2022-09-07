@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Loading = () => {
+export const Loading = () => {
     return (
         <div class="dank-ass-loader">
       <div class="row">
@@ -38,5 +38,3 @@ const Loading = () => {
    </div>
     )
 }
-
-export default Loading
