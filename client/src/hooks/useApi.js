@@ -27,7 +27,7 @@ export const useApi = () => {
         queueCopy.forEach(message => 
             updateQueue(queue => queue.filter(message => message.startTime <= displayTime + currentTime))
         )
-    }, [queue])
+    }, [])
 
     const generateHash = () => {
         enqueue('Generating hash.')
@@ -94,5 +94,5 @@ export const useApi = () => {
         }
     }
 
-    return [queue, loading, compromisedStatus, count, characters]
+    return [queue, loading, compromisedStatus, count, characters, fire]
 }
