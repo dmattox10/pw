@@ -161,4 +161,11 @@
       opacity: 0.1;
     }
   }
+
+table tr:nth-child(odd) td{
+  background-color: #9400ff;
+}
+table tr:nth-child(even) td{
+  background-color: #1ba2f6;
+}
   

@@ -9,7 +9,7 @@ export const useApi = () => {
     const [count, updateCount] = useState('')
     const [characters, updateChar] = useState('')
     const [compromisedStatus, updateCompromisedStatus] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(null)
 
     const enqueue = (messageText) => {
         const startTime = new Date(Date.now())
@@ -45,7 +45,7 @@ export const useApi = () => {
 
     const convertHash = (updatedHash) => {
         const convertedHash = updatedHash.digest('hex')
-        enqueue(`Hash converted to hexadecimal is ${hashedPW}`)
+        enqueue(`Hash converted to hexadecimal is ${convertedHash}`)
         return convertedHash
     }
 
@@ -56,20 +56,21 @@ export const useApi = () => {
     }
 
     const processResponse = (SearchPassAnon) => {
+        const { char, count } = SearchPassAnon
         enqueue(`Processing server response.`)
-        updateChar(SearchPassAnon.char)
-        updateCount(SearchPassAnon.count)
+        updateChar(char)
+        updateCount(count)
         updateCompromisedStatus(true)
     }
 
     const sendHash = (finalHash) => {
         try {
-            enqueue(`Sending final hash ${finalHash}`)
+            enqueue(`The URL used to check was https://passwords.xposedornot.com/api/v1/pass/anon/${finalHash}`)
             return axios.get(`https://passwords.xposedornot.com/api/v1/pass/anon/${finalHash}`)
         }
 
         catch (e) {
-            console.error(error)
+            console.error(e)
             setLoading(false)
         } 
 

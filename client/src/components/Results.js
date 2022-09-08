@@ -1,17 +1,37 @@
 import React from 'react'
+import Table from 'react-bootstrap/Table'
 
-const Results = props => {
-    return (
-        <div className='center'>
-            <h1>This Password appears in the database as a result of {props.results.count} compromised websites!</h1>
-            <h3>This Password is made of {props.results.char}</h3>
-            <h4>Key:</h4>
-            <h6>D: Digits</h6>
-            <h6>A: Alphabet Characters</h6>
-            <h6>S: Special Characters</h6>
-            <h6>L: Length of password</h6>
+export const Results = (props) => {
+    const {count, characters } = props
+    const resultsArray = characters.split(',')
+    const stringsObject = {
+        D: 'Digits:',
+        A: 'Alphabet Characters:',
+        S: 'Special Characters:',
+        L: 'Length of password:'
+    }
+    return(
+        <div>
+            <h4>This password appears in the database {count} times as a result of data breaches where data has been made public.</h4>
+            <Table>
+                <tbody>
+                    {
+                        resultsArray.map((entry) => {
+                            let [a, b] = entry.split(':')
+                            return(
+                                <tr>
+                                    <td>
+                                        {stringsObject[a]}
+                                    </td>
+                                    <td>
+                                        {b}
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
+            </Table>
         </div>
     )
 }
-
-export default Results
