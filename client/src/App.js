@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 
 import { xonContext } from './contexts/xonContext'
 import { useApi } from './hooks/useApi'
+import { useWindowSize } from './hooks/useWindowSize'
 
 import { EntryForm } from './components/EntryForm'
 import { WithLoading } from './components/WithLoading'
@@ -17,6 +18,7 @@ const ResultsWithLoading = WithLoading(Results)
 function App() {
 
   const [queue, loading, compromisedStatus, count, characters, fire] = useApi()
+  const size = useWindowSize()
 
   const renderSwitch = () => {
     if(loading !== null) {
@@ -25,8 +27,12 @@ function App() {
     return <Message />
   }
 
+  const styles = {
+    height: size.height
+  }
+
   return (
-    <div className="App">
+    <div className="App" styles={styles}>
       <xonContext.Provider value={{queue, loading, compromisedStatus, count, characters, fire}} >
         <Container fluid="md">
           <Row>
@@ -46,8 +52,8 @@ function App() {
               }
             </Col>
           </Row>
+          <h6>Created by Daniel Mattox, source code available <a href='https://github.com/dmattox10/pw'>here</a></h6>
         </Container>
-        <h6>Created by Daniel Mattox, source code available <a href='https://github.com/dmattox10/pw'>here</a></h6>
       </xonContext.Provider>
     </div>
   )

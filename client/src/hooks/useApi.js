@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Keccak } from 'sha3'
 import axios from 'axios'
 
@@ -32,14 +32,13 @@ export const useApi = () => {
     const generateHash = () => {
         enqueue('Generating hash.')
         const hash = new Keccak(512)
-        enqueue(`Current hash is ${hash}`)
+        enqueue(`Hash generated.`)
         return hash
     }
 
     const updateHash = (hash, passwordString) => {
         enqueue('Updating Hash to contain the text entered.')
         hash.update(passwordString)
-        enqueue(`Hash containing encrypted text is now ${hash}`)
         return hash
     }
 
@@ -65,7 +64,9 @@ export const useApi = () => {
 
     const sendHash = (finalHash) => {
         try {
-            enqueue(`The URL used to check was https://passwords.xposedornot.com/api/v1/pass/anon/${finalHash}`)
+            const linkLocation = `https://passwords.xposedornot.com/api/v1/pass/anon/${finalHash}`
+            const link = (<a href={linkLocation}>linkLocation</a>)
+            enqueue('The URL used to check was ' + link)
             return axios.get(`https://passwords.xposedornot.com/api/v1/pass/anon/${finalHash}`)
         }
 
@@ -87,7 +88,7 @@ export const useApi = () => {
         const trimmedHash = trimHash(convertedHash)
         const response = await sendHash(trimmedHash)
         if (response.data.SearchPassAnon) { // This is the object containing info if the password exists
-            enqueue(`Server sent response, match founnd.`)
+            enqueue(`Server sent response, match found.`)
             processResponse(response.data.SearchPassAnon)
         } else {
             enqueue(`Server sent response, congratulations!`)

@@ -10,11 +10,11 @@ export const Queue = (props) => {
         <Table>
             <tbody>
                 {
-                    queue.map((entry) => {
+                    queue.map((entry, i) => {
                         return(
-                            <tr>
+                            <tr key={i}>
                                 <td>
-                                    {entry}
+                                    {entry.messageText}
                                 </td>
                             </tr>
                         )
