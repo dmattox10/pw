@@ -18,7 +18,11 @@ const ResultsWithLoading = WithLoading(Results)
 function App() {
 
   const [queue, loading, compromisedStatus, count, characters, fire] = useApi()
+
   const size = useWindowSize()
+  const styles = {
+    height: size.height
+  }
 
   const renderSwitch = () => {
     if(loading !== null) {
@@ -27,12 +31,8 @@ function App() {
     return <Message />
   }
 
-  const styles = {
-    height: size.height
-  }
-
   return (
-    <div className="App" styles={styles}>
+    <div className="App" style={styles}>
       <xonContext.Provider value={{queue, loading, compromisedStatus, count, characters, fire}} >
         <Container fluid="md">
           <Row>

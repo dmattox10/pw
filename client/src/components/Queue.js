@@ -11,6 +11,17 @@ export const Queue = (props) => {
             <tbody>
                 {
                     queue.map((entry, i) => {
+                        let [a, b] = entry.messageText.split(';')
+                        if (a && b) {
+                            return(
+                                <tr key={i}>
+                                <td>
+                                    {a}
+                                    <a href={b}>{b}</a>
+                                </td>
+                            </tr>
+                            )
+                        }
                         return(
                             <tr key={i}>
                                 <td>

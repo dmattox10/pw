@@ -65,8 +65,7 @@ export const useApi = () => {
     const sendHash = (finalHash) => {
         try {
             const linkLocation = `https://passwords.xposedornot.com/api/v1/pass/anon/${finalHash}`
-            const link = (<a href={linkLocation}>linkLocation</a>)
-            enqueue('The URL used to check was ' + link)
+            enqueue(`The URL to GET is ;${linkLocation}`)
             return axios.get(`https://passwords.xposedornot.com/api/v1/pass/anon/${finalHash}`)
         }
 
