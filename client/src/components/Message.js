@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card'
 export const Message = (props) => {
 
     return (
-        <Card>
+        <Card bg='info' text='white'>
             <Card.Body>
                 <Card.Title>Instructions</Card.Title>
                 <Card.Text>

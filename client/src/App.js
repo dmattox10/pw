@@ -7,35 +7,39 @@ import { xonContext } from './contexts/xonContext'
 import { useApi } from './hooks/useApi'
 import { useWindowSize } from './hooks/useWindowSize'
 
+import { Header } from './components/Header'
 import { EntryForm } from './components/EntryForm'
 import { WithLoading } from './components/WithLoading'
 import { Results } from './components/Results'
 import { Message } from './components/Message'
 import { Queue } from './components/Queue'
-import Success from './components/Success'
 
+// Declare HOC
 const ResultsWithLoading = WithLoading(Results)
 
 function App() {
 
-  const [queue, loading, compromisedStatus, count, characters, fire, link] = useApi()
+  const [queue, loading, compromisedStatus, count, characters, fire, link, greatReset] = useApi()
 
   const size = useWindowSize()
   const styles = {
     height: size.height
   }
 
+  // If/Else conditional rendering
   const renderSwitch = () => {
     if(loading !== null) {
-      return <ResultsWithLoading isLoading={loading} count={count} characters={characters} />
+      // Use HOC at the top level, with prop-drilling to the end.
+      return <ResultsWithLoading isLoading={loading} count={count} characters={characters} compromisedStatus={compromisedStatus} link={link} greatReset={greatReset} />
     }
     return <Message />
   }
-
+  // Nothing below here uses prop-drilling, all use global state through context
   return (
     <div className="App" style={styles}>
-      <xonContext.Provider value={{queue, loading, compromisedStatus, count, characters, fire, link}} >
+      <xonContext.Provider value={{queue, loading, compromisedStatus, count, characters, fire, link, greatReset}} >
         <Container fluid="md">
+          <Header />
           <Row>
             <Col xs={12} lg={6}>
               <EntryForm />
@@ -53,9 +57,6 @@ function App() {
               }
             </Col>
           </Row>
-          {
-            link && <Success link={link}/>
-          }
           <h6>Created by Daniel Mattox, source code available <a href='https://github.com/dmattox10/pw'>here</a></h6>
         </Container>
       </xonContext.Provider>

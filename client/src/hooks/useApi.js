@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Keccak } from 'sha3'
 import axios from 'axios'
 
@@ -71,7 +71,7 @@ export const useApi = () => {
         }
 
         catch (e) {
-            console.error(e)
+            console.log(e)
             setLoading(false)
         } 
 
@@ -80,7 +80,19 @@ export const useApi = () => {
         }
     }
 
+    const greatReset = () => {
+        updateChar('')
+        updateCompromisedStatus(null)
+        updateCount('')
+        updateQueue([])
+        setLoading(null)
+        setLink(null)
+    }
+
     const fire = async (passwordString) => {
+        if (compromisedStatus !== null) {
+            greatReset()
+        }
         setLoading(true)
         let hash = generateHash()
         const updatedHash = updateHash(hash, passwordString)
@@ -93,10 +105,10 @@ export const useApi = () => {
             updateCompromisedStatus(true)
         }
         else {
+            enqueue(`Server sent response, no match!`)
             updateCompromisedStatus(false)
         }
-        
     }
 
-    return [queue, loading, compromisedStatus, count, characters, fire, link]
+    return [queue, loading, compromisedStatus, count, characters, fire, link, greatReset]
 }

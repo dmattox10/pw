@@ -1,37 +1,28 @@
 import React from 'react'
-import Table from 'react-bootstrap/Table'
+
+import { Output } from './Output'
+import { Success } from './Success'
 
 export const Results = (props) => {
-    const {count, characters } = props
-    const resultsArray = characters.split(';')
-    const stringsObject = {
-        D: 'Digits:',
-        A: 'Alphabet Characters:',
-        S: 'Special Characters:',
-        L: 'Length of password:'
+    const {count, characters, compromisedStatus, link, greatReset } = props
+
+    // Switch/Case conditional rendering
+    const renderSwitch = () => {
+        switch(compromisedStatus) {
+            case (compromisedStatus === true):
+                return <Output count={count} characters={characters} />
+            case (compromisedStatus == false): // When the null is coerced into a false....
+                return <Success link={link} compromisedStatus={compromisedStatus} greatReset={greatReset} />
+            default:
+                return <Success link={link} compromisedStatus={compromisedStatus} greatReset={greatReset} />
+        }
     }
+
     return(
         <div>
-            <h6>This password appears in the database {count} times.</h6>
-            <Table>
-                <tbody>
-                    {
-                        resultsArray.length > 0 && resultsArray.map((entry) => {
-                            let [a, b] = entry.split(':')
-                            return(
-                                <tr key={a}>
-                                    <td>
-                                        {stringsObject[a]}
-                                    </td>
-                                    <td>
-                                        {b}
-                                    </td>
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </Table>
+            {
+            renderSwitch()
+            }
         </div>
     )
 }

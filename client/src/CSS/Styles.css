@@ -168,4 +168,9 @@ table tr:nth-child(odd) td{
 table tr:nth-child(even) td{
   background-color: #1ba2f6;
 }
+
+.row {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
   

@@ -6,6 +6,7 @@ This is a complete rewrite using all that I've learned since finishing training.
 - Added docker. 
 - Finally responsive.
 - Uses conditional rendering via both inline and HOC methods.
+- Passes props around through both prop-drilling and Context Provider
 - No clever one-liners.
 - Consistent use of named exports.
 - Hire me.
