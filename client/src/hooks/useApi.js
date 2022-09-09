@@ -10,6 +10,7 @@ export const useApi = () => {
     const [characters, updateChar] = useState('')
     const [compromisedStatus, updateCompromisedStatus] = useState(null)
     const [loading, setLoading] = useState(null)
+    const [link, setLink] = useState(null)
 
     const enqueue = (messageText) => {
         const startTime = new Date(Date.now())
@@ -59,12 +60,12 @@ export const useApi = () => {
         enqueue(`Processing server response.`)
         updateChar(char)
         updateCount(count)
-        updateCompromisedStatus(true)
     }
 
     const sendHash = (finalHash) => {
         try {
             const linkLocation = `https://passwords.xposedornot.com/api/v1/pass/anon/${finalHash}`
+            setLink(linkLocation)
             enqueue(`The URL to GET is ;${linkLocation}`)
             return axios.get(`https://passwords.xposedornot.com/api/v1/pass/anon/${finalHash}`)
         }
@@ -86,14 +87,16 @@ export const useApi = () => {
         const convertedHash = convertHash(updatedHash)
         const trimmedHash = trimHash(convertedHash)
         const response = await sendHash(trimmedHash)
-        if (response.data.SearchPassAnon) { // This is the object containing info if the password exists
+        if (response.status === 200) {
             enqueue(`Server sent response, match found.`)
             processResponse(response.data.SearchPassAnon)
-        } else {
-            enqueue(`Server sent response, congratulations!`)
+            updateCompromisedStatus(true)
+        }
+        else {
             updateCompromisedStatus(false)
         }
+        
     }
 
-    return [queue, loading, compromisedStatus, count, characters, fire]
+    return [queue, loading, compromisedStatus, count, characters, fire, link]
 }

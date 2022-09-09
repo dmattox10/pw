@@ -12,12 +12,13 @@ import { WithLoading } from './components/WithLoading'
 import { Results } from './components/Results'
 import { Message } from './components/Message'
 import { Queue } from './components/Queue'
+import Success from './components/Success'
 
 const ResultsWithLoading = WithLoading(Results)
 
 function App() {
 
-  const [queue, loading, compromisedStatus, count, characters, fire] = useApi()
+  const [queue, loading, compromisedStatus, count, characters, fire, link] = useApi()
 
   const size = useWindowSize()
   const styles = {
@@ -33,7 +34,7 @@ function App() {
 
   return (
     <div className="App" style={styles}>
-      <xonContext.Provider value={{queue, loading, compromisedStatus, count, characters, fire}} >
+      <xonContext.Provider value={{queue, loading, compromisedStatus, count, characters, fire, link}} >
         <Container fluid="md">
           <Row>
             <Col xs={12} lg={6}>
@@ -52,6 +53,9 @@ function App() {
               }
             </Col>
           </Row>
+          {
+            link && <Success link={link}/>
+          }
           <h6>Created by Daniel Mattox, source code available <a href='https://github.com/dmattox10/pw'>here</a></h6>
         </Container>
       </xonContext.Provider>
