@@ -1,0 +1,15 @@
+---
+version: '3.7'
+
+services:
+  pw:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    image: pw
+    command: yarn start
+    volumes:
+      - ./:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - "4000:4000"
