@@ -1,0 +1,19 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: pw
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pw
+  template:
+    metadata:
+      labels:
+        app: pw
+    spec:
+      containers:
+      - name: pw
+        image: pw
+        ports:
+        - containerPort: 4000
