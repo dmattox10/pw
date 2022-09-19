@@ -9,27 +9,27 @@ export const Queue = (props) => {
     <Table>
       <tbody>
         {
-                    queue.map((entry, i) => {
-                      const [a, b] = entry.messageText.split(';')
-                      if (a && b) {
-                        return (
-                          <tr key={i}>
-                            <td>
-                              {a}
-                              <a href={b}>{b}</a>
-                            </td>
-                          </tr>
-                        )
-                      }
-                      return (
-                        <tr key={i}>
-                          <td>
-                            {entry.messageText}
-                          </td>
-                        </tr>
-                      )
-                    })
-                }
+            queue.map((entry, i) => {
+              const [a, b] = entry.messageText.split(';')
+              if (a && b) {
+                return (
+                  <tr key={i}>
+                    <td>
+                      {a}
+                      <a href={b}>{b}</a>
+                    </td>
+                  </tr>
+                )
+              }
+              return (
+                <tr key={i}>
+                  <td>
+                    {entry.messageText}
+                  </td>
+                </tr>
+              )
+            })
+        }
       </tbody>
     </Table>
   )
