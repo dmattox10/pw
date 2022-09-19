@@ -1,6 +1,8 @@
 ## Has my password been leaked?
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+This code is deployed [HERE](https://pw.danielmattox.com) via docker on my own server.
+
 This is a complete rewrite using all that I've learned since finishing training.
 
 - This project is front-end only.
@@ -25,8 +27,6 @@ How it, and my front-end works is by hashing the password into an unrecognizable
 - Keccak Hashing Algorithm
 - Axios for calls
 - Bootstrap through ~~Reactstrap~~ React-Bootstrap with Bootswatch theming for style
-
-This code is deployed [HERE](https://pw.danielmattox.com)
 
 <img src="media/screenshot1.png" align="center" style="width: 100%" />
 <img src="media/screenshot2.png" align="center" style="width: 100%" />
