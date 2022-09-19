@@ -50,8 +50,8 @@ function App() {
               }
             </Col>
           </Row>
-          <Row>
-            <Col xs={12}>
+          <Row style={{overflowX:'auto'}}>
+            <Col xs={12} lg={12}>
               { queue.length > 0 &&
                 <Queue />
               }

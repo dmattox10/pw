@@ -1,3 +1,9 @@
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  word-wrap: normal;
+}
+
 .spacer {
     height: 5vh;
 }
@@ -174,4 +180,12 @@ table tr:nth-child(even) td{
   margin-bottom: 2rem;
   padding: 1rem;
 }
+
+
+
+table td {
+  word-break: break-all;
+}
+
+
   
