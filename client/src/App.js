@@ -17,8 +17,7 @@ import { Queue } from './components/Queue'
 // Declare HOC
 const ResultsWithLoading = WithLoading(Results)
 
-function App() {
-
+function App () {
   const [queue, loading, compromisedStatus, count, characters, fire, link, greatReset] = useApi()
 
   const size = useWindowSize()
@@ -28,7 +27,7 @@ function App() {
 
   // If/Else conditional rendering
   const renderSwitch = () => {
-    if(loading !== null) {
+    if (loading !== null) {
       // Use HOC at the top level, with prop-drilling to the end.
       return <ResultsWithLoading isLoading={loading} count={count} characters={characters} compromisedStatus={compromisedStatus} link={link} greatReset={greatReset} />
     }
@@ -36,9 +35,9 @@ function App() {
   }
   // Nothing below here uses prop-drilling, all use global state through context
   return (
-    <div className="App" style={styles}>
-      <xonContext.Provider value={{queue, loading, compromisedStatus, count, characters, fire, link, greatReset}} >
-        <Container fluid="md">
+    <div className='App' style={styles}>
+      <xonContext.Provider value={{ queue, loading, compromisedStatus, count, characters, fire, link, greatReset }}>
+        <Container fluid='md'>
           <Header />
           <Row>
             <Col xs={12} lg={6}>
@@ -50,11 +49,10 @@ function App() {
               }
             </Col>
           </Row>
-          <Row style={{overflowX:'auto'}}>
+          <Row style={{ overflowX: 'auto' }}>
             <Col xs={12} lg={12}>
-              { queue.length > 0 &&
-                <Queue />
-              }
+              {queue.length > 0 &&
+                <Queue />}
             </Col>
           </Row>
           <h6>Created by Daniel Mattox, source code available <a href='https://github.com/dmattox10/pw'>here</a></h6>

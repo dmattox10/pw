@@ -1,4 +1,5 @@
 ## Has my password been leaked?
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 This is a complete rewrite using all that I've learned since finishing training.
 
@@ -8,8 +9,11 @@ This is a complete rewrite using all that I've learned since finishing training.
 - Uses conditional rendering via both inline and HOC methods.
 - Passes props around through both prop-drilling and Context Provider
 - No clever one-liners.
+- Seriously that useApi hook is the most terse code I've written to date.
 - Consistent use of named exports.
 - Hire me.
+
+
 
 ### About:
 Tasked with finding and communicating with any free (open) API, I found one for checking passwords.
