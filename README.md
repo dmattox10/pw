@@ -3,7 +3,7 @@
 
 This code is deployed [HERE](https://pw.danielmattox.com) via docker on my own server.
 
-This is a complete rewrite using all that I've learned since finishing training.
+This is a completed rewrite using all that I've learned since finishing training.
 
 - This project is front-end only.
 - Added docker. 
