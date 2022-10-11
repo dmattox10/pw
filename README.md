@@ -8,7 +8,7 @@ This is a completed rewrite using all that I've learned since finishing training
 - This project is front-end only.
 - Added docker. 
 - Finally responsive.
-- Uses conditional rendering via both inline and HOC methods.
+- Uses conditional rendering via both inline and Higher Order Component methodologies.
 - Passes props around through both prop-drilling and Context Provider
 - No clever one-liners.
 - Seriously that useApi hook is the most terse code I've written to date.
